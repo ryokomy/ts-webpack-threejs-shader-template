@@ -28,21 +28,11 @@
   <canvas id="main-canvas"></canvas>
 
   <script id="vertexShader" type="x-shader/x-vertex">
-uniform float time;
-uniform vec2 resolution;
-void main()	{
-    gl_Position = vec4( position, 1.0 );
-}
+REPLACE_VERTEX_SHADER
   </script>
 
   <script id="fragmentShader" type="x-shader/x-fragment">
-uniform float time;
-uniform vec2 resolution;
-void main()	{
-    float x = mod(time + gl_FragCoord.x, 20.) < 10. ? 1. : 0.;
-    float y = mod(time + gl_FragCoord.y, 20.) < 10. ? 1. : 0.;
-    gl_FragColor = vec4(vec3(min(x, y)), 1.);
-}
+REPLACE_FRAGMENT_SHADER
   </script>
   
   <script src="dist/bundle.js"></script>

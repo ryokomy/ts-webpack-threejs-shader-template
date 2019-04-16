@@ -4,10 +4,13 @@
   "main": "app.ts",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack"
+    "build": "npm run build:html && webpack",
+    "build:html": "ts-node src/html/build_html.ts"
   },
   "dependencies": {
+    "@types/fs-extra": "^5.0.5",
     "@types/three": "^0.93.30",
+    "fs-extra": "^7.0.1",
     "three": "^0.103.0",
     "ts-loader": "^5.3.3",
     "typescript": "^3.4.1",
