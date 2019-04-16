@@ -6,6 +6,11 @@ import {
     Vector2,
 } from 'three';
 
+// tslint:disable-next-line
+const fragmentShader = require('../shaders/shader.fs') // tslint-disable-line no-alert
+// tslint:disable-next-line
+const vertexShader = require('../shaders/shader.vs') // eslint-disable-line no-alert
+
 export class SampleShaderMesh extends Mesh {
 
     private shaderMaterialParams: ShaderMaterialParameters;
@@ -17,14 +22,13 @@ export class SampleShaderMesh extends Mesh {
         this.startTime = Date.now();
 
         // material
-        const shaders: string[] = this.getShaders();
         this.shaderMaterialParams = {
-            fragmentShader: shaders[1],
+            fragmentShader,
             uniforms: {
                 resolution: { type: 'v2', value: new Vector2() },
                 time: { type: 'f', value: 1.0 },
             },
-            vertexShader: shaders[0],
+            vertexShader,
         };
         this.material = new ShaderMaterial(this.shaderMaterialParams);
 
@@ -39,15 +43,5 @@ export class SampleShaderMesh extends Mesh {
         const elapsedMilliseconds = Date.now() - this.startTime;
         const elapsedSeconds = elapsedMilliseconds / 1000.;
         this.shaderMaterialParams.uniforms.time.value = 60. * elapsedSeconds;
-    }
-
-    private getShaders(): string[] {
-        const vertexShaderElement = document.getElementById('vertexShader');
-        const fragmentShaderElement = document.getElementById('fragmentShader');
-        const vertexShaderTextContent = vertexShaderElement ? vertexShaderElement.textContent : '';
-        const fragmentShaderTextContent = fragmentShaderElement ? fragmentShaderElement.textContent : '';
-        const vertexShader = vertexShaderTextContent ? vertexShaderTextContent : '';
-        const fragmentShader = fragmentShaderTextContent ? fragmentShaderTextContent : '';
-        return [vertexShader, fragmentShader];
     }
 }

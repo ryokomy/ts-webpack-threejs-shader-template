@@ -10,7 +10,7 @@ module.exports = {
     publicPath: '/dist'
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js', '.glsl', 'vs', 'fs']
   },
   module: {
     rules: [
@@ -19,7 +19,11 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/
       },
-    ]
+      {
+        test: /\.(glsl|vs|fs)$/,
+        loader: 'shader-loader'
+      }
+    ],
   },
   watchOptions: {
     ignored: /node_modules/
