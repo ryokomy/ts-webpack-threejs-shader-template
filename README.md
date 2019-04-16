@@ -2,12 +2,12 @@
 
 ## Install dependencies
 
-    yarn
+    npm install
 
 ## Run project
 
-    yarn start
+    npm run start
 
 ## Compile code to bundle
 
-    webpack
+    npm run build
