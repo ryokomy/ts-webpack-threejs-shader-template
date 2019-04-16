@@ -1,4 +1,11 @@
-# Shader Art Template: TypeScript + Webpack + three.js + Shader
+# Template: TypeScript + Webpack + Three.js + Shader
+
+![](https://github.com/ryokomy/ts-webpack-threejs-shader-template/blob/master/img/shader.gif)
+
+## Features
+:fire: TypeScript :fire:  
+:fire: Three.js :fire:  
+:fire: External shader files !! Not in html !! :fire:  
 
 ## How to Use
 #### Install dependencies
